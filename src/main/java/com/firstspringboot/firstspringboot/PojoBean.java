@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PojoBean {
     @Autowired // search by class type
-    @Qualifier("PojoBean2") // search by name
+    @Qualifier("PojoBean2") // search by name & helps in case of multiple beans
     PojoBean2 bean2;
 
     public PojoBean(){

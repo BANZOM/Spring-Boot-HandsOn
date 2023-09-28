@@ -9,4 +9,10 @@ public class ResourcesInjectMain {
     // Ask the container to get the bean and 'put' it here (inject)
     @Resource(name = "dummy")
     private File dummy;
+
+    @Override
+    public String toString() {
+        return "ResourcesInjectMain [dummy=" + dummy + "]";
+    }
+    
 }

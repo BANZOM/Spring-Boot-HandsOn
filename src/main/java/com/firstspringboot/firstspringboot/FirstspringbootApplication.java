@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.*;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import com.firstspringboot.firstspringboot.resourcehandson.ResourcesInjectMain;
+import com.firstspringboot.firstspringboot.service.GetFactorial;
 
 @SpringBootApplication
 public class FirstspringbootApplication {
@@ -17,6 +18,9 @@ public class FirstspringbootApplication {
 
 		ResourcesInjectMain resourcesInjectMain = context.getBean(ResourcesInjectMain.class);
 		System.out.println(resourcesInjectMain);
+
+		GetFactorial getFactorial = context.getBean(GetFactorial.class);
+		System.out.println("Getting Factorial of 5 using Service bean: " + getFactorial.find(5));
 	}
 
 }

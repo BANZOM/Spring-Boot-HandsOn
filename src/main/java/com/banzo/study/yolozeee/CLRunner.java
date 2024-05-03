@@ -1,5 +1,6 @@
 package com.banzo.study.yolozeee;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -36,28 +37,28 @@ public class CLRunner implements CommandLineRunner {
         List<Room> roomsByName = roomRepository.findByName("Piccadilly");
         Optional<Room> roomsByRoomNumberAndBedInfo = roomRepository.findByRoomNumberAndBedInfo("P1", "1Q");
 
-        System.out.println("all rooms:");
-        allRooms.forEach(System.out::println);
+        // System.out.println("all rooms:");
+        // allRooms.forEach(System.out::println);
 
-        System.out.println("room by room number:");
-        System.out.println(rooms);
+        // System.out.println("room by room number:");
+        // System.out.println(rooms);
 
-        System.out.println("room by name:");
-        roomsByName.forEach(System.out::println);
+        // System.out.println("room by name:");
+        // roomsByName.forEach(System.out::println);
 
-        System.out.println("room by room number and bed info:");
-        System.out.println(roomsByRoomNumberAndBedInfo);
+        // System.out.println("room by room number and bed info:");
+        // System.out.println(roomsByRoomNumberAndBedInfo);
 
 
         // Entity Guest
         List<Guest> guestsFindByState = guestRepository.findByState("CA");
 
         System.out.println("guests by state:");
-        guestsFindByState.forEach(System.out::println);
+        // guestsFindByState.forEach(System.out::println);
 
         // Entity Reservation
         LocalDate reservationDate = LocalDate.parse("2023-08-28");
-        List<Reservation> reservationsFindByReservationDate = reservationRepository.findByReservationDate(reservationDate);
+        List<Reservation> reservationsFindByReservationDate = reservationRepository.findByReservationDate(Date.valueOf("2023-08-28"));
 
         System.out.println("reservations by reservation date:");
         reservationsFindByReservationDate.forEach(System.out::println);

@@ -1,5 +1,9 @@
 package com.banzo.study.yolozeee.data.entity;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +31,7 @@ public class Reservation {
     private Long guestId;
 
     @Column(name = "res_date")
-    private String reservationDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate reservationDate;
 
 }

@@ -36,17 +36,17 @@ public class CLRunner implements CommandLineRunner {
         List<Room> roomsByName = roomRepository.findByName("Piccadilly");
         Optional<Room> roomsByRoomNumberAndBedInfo = roomRepository.findByRoomNumberAndBedInfo("P1", "1Q");
 
-        // System.out.println("all rooms:");
-        // allRooms.forEach(System.out::println);
+        System.out.println("all rooms:");
+        allRooms.forEach(System.out::println);
 
-        // System.out.println("room by room number:");
-        // System.out.println(rooms);
+        System.out.println("room by room number:");
+        System.out.println(rooms);
 
-        // System.out.println("room by name:");
-        // roomsByName.forEach(System.out::println);
+        System.out.println("room by name:");
+        roomsByName.forEach(System.out::println);
 
-        // System.out.println("room by room number and bed info:");
-        // System.out.println(roomsByRoomNumberAndBedInfo);
+        System.out.println("room by room number and bed info:");
+        System.out.println(roomsByRoomNumberAndBedInfo);
 
 
         // Entity Guest

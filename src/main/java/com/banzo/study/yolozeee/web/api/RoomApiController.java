@@ -3,6 +3,7 @@ package com.banzo.study.yolozeee.web.api;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,6 +47,12 @@ public class RoomApiController {
     public Room updateRoom(@PathVariable("id") long id, @RequestBody Room room) {
         this.roomRepository.findById(id).orElseThrow(() -> new BadRequestException("Room not found with id: " + id));
         return this.roomRepository.save(room);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.RESET_CONTENT)
+    public void deleteRoom(@PathVariable("id") long id) {
+        this.roomRepository.deleteById(id);
     }
 
 }

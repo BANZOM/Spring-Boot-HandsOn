@@ -2,11 +2,13 @@ package com.banzo.study.yolozeee.web.api;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.banzo.study.yolozeee.data.entity.Guest;
@@ -35,6 +37,7 @@ public class GuestApiController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Guest createGuest(Guest guest) {
         return this.guestRepository.save(guest);
     }

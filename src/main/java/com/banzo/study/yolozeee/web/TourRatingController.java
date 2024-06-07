@@ -1,11 +1,15 @@
 package com.banzo.study.yolozeee.web;
 
+import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,6 +55,19 @@ public class TourRatingController {
     @ExceptionHandler(NoSuchElementException.class)
     public String return400(NoSuchElementException ex) {
         return ex.getMessage();
+    }
+
+    @GetMapping(path = "/average")
+    public List<RatingDto> getAllRatingsForTour(@PathVariable(value = "tourId") Integer tourId) {
+        verifyTour(tourId);
+        return tourRatingRepository.findByPkTourId(tourId).stream().map(RatingDto::new).collect(Collectors.toList());
+    }
+
+    public Map<String, Double> getAverage(@PathVariable(value = "tourId") Integer tourId) {
+        verifyTour(tourId);
+        return Map.of("average", tourRatingRepository.findByPkTourId(tourId).stream().mapToInt(TourRating::getScore).average().orElseThrow(
+                () -> new NoSuchElementException("Tour has no ratings")
+        ));
     }
 
 }

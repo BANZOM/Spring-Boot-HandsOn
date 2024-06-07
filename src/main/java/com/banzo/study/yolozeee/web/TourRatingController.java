@@ -57,12 +57,12 @@ public class TourRatingController {
         return ex.getMessage();
     }
 
-    @GetMapping(path = "/average")
     public List<RatingDto> getAllRatingsForTour(@PathVariable(value = "tourId") Integer tourId) {
         verifyTour(tourId);
         return tourRatingRepository.findByPkTourId(tourId).stream().map(RatingDto::new).collect(Collectors.toList());
     }
 
+    @GetMapping(path = "/average")
     public Map<String, Double> getAverage(@PathVariable(value = "tourId") Integer tourId) {
         verifyTour(tourId);
         return Map.of("average", tourRatingRepository.findByPkTourId(tourId).stream().mapToInt(TourRating::getScore).average().orElseThrow(

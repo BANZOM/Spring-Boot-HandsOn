@@ -1,5 +1,7 @@
 package com.banzo.study.yolozeee.domain;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.ManyToOne;
@@ -15,7 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class TourRatingPk {
+public class TourRatingPk implements Serializable {
 
     @ManyToOne
     private Tour tour;
